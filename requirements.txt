@@ -1,34 +1,55 @@
-# Core deep learning (install with CUDA 12.4 index for GPU build)
-# pip install torch==2.6.0 torchvision==0.21.0 --index-url https://download.pytorch.org/whl/cu124
-torch==2.6.0
-torchvision==0.21.0
+# ReflectiVA Vietnamese VQA base environment
+# Target server CUDA: 12.4
+#
+# Recommended Python: 3.10
+#
+# Install:
+#   pip install -r requirements.txt
+#   pip install flash-attn==2.7.4.post1 --no-build-isolation
+#   pip install -r requirements_vn.txt
+#
+# PyTorch CUDA 12.4 wheels.
+--extra-index-url https://download.pytorch.org/whl/cu124
 
-# Transformers ecosystem
-transformers==5.7.0
-peft==0.15.2
-accelerate==1.13.0
-tokenizers==0.22.2
+torch==2.6.0+cu124
+torchvision==0.21.0+cu124
 
-# Retrieval
-faiss-cpu==1.9.0
+# Keep this Transformers line pinned. ReflectiVA's custom LLaVA classes are
+# written against the 4.x API; upgrading to newer major versions is risky.
+transformers==4.43.1
+tokenizers==0.19.1
 
-# Vision
-Pillow==12.1.1
+accelerate==0.33.0
+deepspeed==0.16.4
+peft==0.12.0
 
-# Numeric / data
-numpy==2.2.6
+# Install flash-attn separately with --no-build-isolation, as shown above.
+# Keeping it commented here avoids common pip build-order failures.
+# flash-attn==2.7.4.post1
 
-# Progress
-tqdm==4.67.3
+numpy==1.26.4
+pillow==10.4.0
+tqdm==4.66.5
+ujson==5.10.0
+requests==2.32.3
+packaging==24.1
+huggingface-hub==0.24.6
+safetensors==0.4.4
+sentencepiece==0.2.0
+einops==0.8.0
+timm==1.0.8
+faiss-cpu==1.8.0.post1
 
-# Gemini embedding backend
-google-genai==1.67.0
+# Needed by optional/original ReflectiVA evaluation paths, and harmless for VN.
+webdataset==0.2.100
+braceexpand==0.1.7
+spacy==3.7.5
 
-# Environment variable loading
-python-dotenv==1.2.1
-
-# Evaluation metrics
-bert-score==0.3.13
-nltk==3.9.4
-pycocoevalcap==1.2
-pycocotools==2.0.11
+# Server/demo/eval helpers used by legacy LLaVA scripts.
+gradio==4.44.0
+fastapi==0.112.2
+uvicorn==0.30.6
+shortuuid==1.0.13
+pandas==2.2.2
+openai==1.42.0
+editdistance==0.8.1

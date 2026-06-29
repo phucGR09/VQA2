@@ -22,3 +22,4 @@ build/
 *.egg
 *.tar.gz
 *.zip
+data
