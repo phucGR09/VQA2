@@ -1,0 +1,7 @@
+group_voting_retrieval.csv: {
+    'hits@1': 7224, 
+    'hits@10': 25033, 
+    'recall@10': 0.22045018229212535, 
+    'mrr': 0.10605765217360362, 
+    'n_evaluated': 113554
+}
